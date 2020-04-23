@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { MainComponent } from './pages/main/main.component';
+import { NotFoundPageComponent } from './pages/not-found/not-found-page.component';
 
 /**
  * Конфигурация маршрутизации приложения
@@ -30,10 +31,10 @@ export const routes: Routes = [
             },
             
             /** Страница 404 */
-            // {
-            //     path: '**',
-            //     loadChildren: null 
-            // }
+            {
+                path: '**',
+                component: NotFoundPageComponent
+            }
         ]
     }
 ];
