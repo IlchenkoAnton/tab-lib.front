@@ -19,10 +19,10 @@ export const routes: Routes = [
             },
 
             /** Страница логина */
-            // {
-            //     path: 'login',
-            //     loadChildren: null
-            // },
+            {
+                path: 'login',
+                loadChildren: './pages/login/login.module#LoginModule' 
+            },
 
             /** Страница рабочего стола */
             {
