@@ -1,18 +1,21 @@
 import { Routes } from '@angular/router';
 
+import { MainComponent } from './pages/main/main.component';
+
 /**
  * Конфигурация маршрутизации
  */
 export const routes: Routes = [
-    /** Абстрактный базовый маршрут */
+    /** Базовый маршрут */
     {
         path: '',
+        component: MainComponent,
         children: [
-            // {
-            //     path: '',
-            //     redirectTo: 'dashboard',
-            //     pathMatch: 'full'
-            // },
+            {
+                path: '',
+                redirectTo: 'dashboard',
+                pathMatch: 'full'
+            },
 
             /** Страница логина */
             // {
