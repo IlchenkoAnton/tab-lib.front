@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { MainComponent } from './pages/main/main.component';
 
 /**
- * Конфигурация маршрутизации
+ * Конфигурация маршрутизации приложения
  */
 export const routes: Routes = [
     /** Базовый маршрут */

@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './routing-config';
 
 /**
- * Модуль маршрутизации
+ * Модуль маршрутизации приложения
  */
 @NgModule({
     imports: [
