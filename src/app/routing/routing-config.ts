@@ -1,18 +1,22 @@
 import { Routes } from '@angular/router';
 
+import { MainComponent } from './pages/main/main.component';
+import { NotFoundPageComponent } from './pages/not-found/not-found-page.component';
+
 /**
- * Конфигурация маршрутизации
+ * Конфигурация маршрутизации приложения
  */
 export const routes: Routes = [
-    /** Абстрактный базовый маршрут */
+    /** Базовый маршрут */
     {
         path: '',
+        component: MainComponent,
         children: [
-            // {
-            //     path: '',
-            //     redirectTo: 'dashboard',
-            //     pathMatch: 'full'
-            // },
+            {
+                path: '',
+                redirectTo: 'dashboard',
+                pathMatch: 'full'
+            },
 
             /** Страница логина */
             // {
@@ -27,10 +31,10 @@ export const routes: Routes = [
             },
             
             /** Страница 404 */
-            // {
-            //     path: '**',
-            //     loadChildren: null 
-            // }
+            {
+                path: '**',
+                component: NotFoundPageComponent
+            }
         ]
     }
 ];
