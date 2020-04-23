@@ -39,6 +39,6 @@ export class AuthenticationService implements AuthenticationBaseService {
      * //
      */
     public logout(): Observable<void> {
-        return this.authenticationRepository.logu
+        return this.authenticationRepository.logout();
     }
 }

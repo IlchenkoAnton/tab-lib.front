@@ -7,26 +7,30 @@ export const routes: Routes = [
     /** Абстрактный базовый маршрут */
     {
         path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full',
         children: [
+            // {
+            //     path: '',
+            //     redirectTo: 'dashboard',
+            //     pathMatch: 'full'
+            // },
+
             /** Страница логина */
-            {
-                path: 'login',
-                loadChildren: null
-            },
+            // {
+            //     path: 'login',
+            //     loadChildren: null
+            // },
 
             /** Страница рабочего стола */
             {
                 path: 'dashboard',
-                loadChildren: null
+                loadChildren: './pages/dashboard/dashboard.module#DashboardModule' 
             },
             
             /** Страница 404 */
-            {
-                path: '**',
-                loadChildren: null 
-            }
+            // {
+            //     path: '**',
+            //     loadChildren: null 
+            // }
         ]
     }
 ];
