@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 /**
- * //
+ * Компонент для страницы 404
  */
 @Component({
     selector: 'tl-not-found-page',
