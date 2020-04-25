@@ -1,28 +1,25 @@
 import { Observable } from 'rxjs';
 
-import { IUser } from '../models/user.interface';
+import { IUser } from './models/user.interface';
 
 /**
- * //
+ * Базовый класс для сервиса авторизации
  */
 export abstract class AuthenticationBaseService {
     /**
-     * //
+     * Метод входа в систему
+     * @param name - Имя пользователя
+     * @param password - Пароль пользователя
+     */
+    public abstract signIn(name: string, password: string): Observable<void>;
+
+    /**
+     * Метод выхода из системы
+     */
+    public abstract signOut(): Observable<void>;
+
+    /**
+     * Метод получения объекта пользователя
      */
     public abstract getUser(): IUser;
-
-    /**
-     * //
-     */
-    public abstract getToken(): string;
-
-    /**
-     * //
-     */
-    public abstract login(name: string, password: string): Observable<void>;
-
-    /**
-     * //
-     */
-    public abstract logout(): Observable<void>;
 }

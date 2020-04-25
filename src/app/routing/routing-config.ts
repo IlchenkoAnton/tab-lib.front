@@ -21,19 +21,19 @@ export const routes: Routes = [
             /** Страница логина */
             {
                 path: 'login',
-                loadChildren: './pages/login/login.module#LoginModule' 
+                loadChildren: './pages/login/login.module#LoginModule'
             },
 
             /** Страница рабочего стола */
             {
                 path: 'dashboard',
-                loadChildren: './pages/dashboard/dashboard.module#DashboardModule' 
+                loadChildren: './pages/dashboard/dashboard.module#DashboardModule'
             },
             
             /** Страница 404 */
             {
                 path: '**',
-                component: NotFoundPageComponent
+                loadChildren: './pages/not-found/not-found.module#NotFoundModule'
             }
         ]
     }

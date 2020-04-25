@@ -1,12 +1,13 @@
 import { IUser } from './user.interface';
 
 /**
- * //
+ * Пользователь
  */
 export class User implements IUser {
     constructor(
         private readonly id: string,
-        private readonly name: string
+        private readonly name: string,
+        private readonly token: string
     ) {}
 
     get Id(): string {
@@ -15,5 +16,9 @@ export class User implements IUser {
 
     get Name(): string {
         return this.name;
+    }
+
+    get Token(): string {
+        return this.token;
     }
 }

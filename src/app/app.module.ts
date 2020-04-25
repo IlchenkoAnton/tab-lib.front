@@ -6,7 +6,7 @@ import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { MainComponent } from './routing/pages/main/main.component';
-import { NotFoundModule } from './routing/pages/not-found/not-found.module';
+import { AuthenticationModule } from './modules/authentication';
 
 @NgModule({
     imports: [
@@ -14,7 +14,7 @@ import { NotFoundModule } from './routing/pages/not-found/not-found.module';
         HttpClientModule,
         AppRoutingModule,
         CoreModule,
-        NotFoundModule
+        AuthenticationModule
     ],
     declarations: [
         AppComponent,

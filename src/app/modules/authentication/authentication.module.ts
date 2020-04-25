@@ -6,7 +6,7 @@ import { AuthenticationBaseService } from './core/authentication-base.service';
 import { AuthenticationService } from './core/authentication.service';
 
 /**
- * //
+ * Модуль авторизации
  */
 @NgModule({
     imports: [],
