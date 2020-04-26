@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './routing/pages/main/main.component';
 import { AuthenticationModule } from './modules/authentication';
 import { CoreModule } from './core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { CoreModule } from './core';
         CoreModule,
         AuthenticationModule.forRoot({
             redirectPath: [ '/', 'login' ]
-        })
+        }),
+        BrowserAnimationsModule
     ],
     declarations: [
         AppComponent,
