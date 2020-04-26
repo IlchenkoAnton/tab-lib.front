@@ -1,7 +1,10 @@
 /**
- * //
+ * Конфигурация модуля авторизации
  */
 export type AuthenticationConfig = {
-    /** */
-    redirectPath: string[]
+    /** Маршрут неавторизованной зоны */
+    notAuthorizedZone: string[],
+
+    /** Маршрут авторизованной зоны */
+    authorizedZone: string[]
 }

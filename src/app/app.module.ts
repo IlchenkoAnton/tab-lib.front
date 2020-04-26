@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './routing/pages/main/main.component';
 import { AuthenticationModule } from './modules/authentication';
 import { CoreModule } from './core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './components';
 
 @NgModule({
     imports: [
@@ -16,13 +17,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         AppRoutingModule,
         CoreModule,
         AuthenticationModule.forRoot({
-            redirectPath: [ '/', 'login' ]
+            notAuthorizedZone: [ '/', 'login' ],
+            authorizedZone: [ '/' ]
         }),
         BrowserAnimationsModule
     ],
     declarations: [
         AppComponent,
-        MainComponent
+        MainComponent,
+        HeaderComponent
     ],
     providers: [],
     bootstrap: [

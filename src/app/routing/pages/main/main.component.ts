@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 /**
  * Основной компонент страниц приложения
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'tl-main-page',
     templateUrl: './main.component.html',
-    styleUrls: [ './main.component.scss' ]
+    styleUrls: [ './main.component.scss' ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainComponent {}

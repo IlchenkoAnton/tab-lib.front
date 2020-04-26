@@ -1,15 +1,15 @@
 import { Injectable, Inject } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { IUser } from './models/user.interface';
 import { AuthenticationBaseService } from './authentication-base.service';
 import { AuthenticationConfig } from '../authentication-config.type';
+import { IUser } from './models/user.interface';
 
 /**
- * Гвард проверки доступа в авторизованную зону
+ * Гвард проверки доступа в неавторизованную зону
  */
 @Injectable()
-export class AuthenticationGuard implements CanActivate {
+export class NotAuthenticationGuard implements CanActivate {
     constructor(
         private readonly router: Router,
         private readonly authenticationService: AuthenticationBaseService,
@@ -17,21 +17,19 @@ export class AuthenticationGuard implements CanActivate {
     ) {}
 
     /**
-     * Метод предотвращает переход по маршруту, если отсутствует пользователь
+     * Метод предотвращает переход по маршруту, если присутствует пользователь
      */
     public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         try {
             const user: IUser = this.authenticationService.getUser();
-            
+
             if (user) {
-                return true;
+                this.router.navigate(this.config.authorizedZone);
+
+                return false
             }
         } catch (error) {
-            console.error(error);
-
-            this.router.navigate(this.config.notAuthorizedZone);
+            return true;
         }
-
-        return false;
     }
 }

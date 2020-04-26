@@ -11,7 +11,7 @@ const routes: Routes = [
 ];
 
 /**
- * //
+ * Модуль маршрутизации страницы авторизации
  */
 @NgModule({
     imports: [

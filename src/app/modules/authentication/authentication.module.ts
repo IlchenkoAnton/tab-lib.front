@@ -6,6 +6,7 @@ import { AuthenticationBaseService } from './core/authentication-base.service';
 import { AuthenticationService } from './core/authentication.service';
 import { AuthenticationGuard } from './core/authentication.guard';
 import { AuthenticationConfig } from './authentication-config.type';
+import { NotAuthenticationGuard } from './core/not-authentication.guard';
 
 /**
  * Модуль авторизации
@@ -27,7 +28,8 @@ export class AuthenticationModule {
                     provide: AuthenticationBaseService,
                     useClass: AuthenticationService
                 },
-                AuthenticationGuard
+                AuthenticationGuard,
+                NotAuthenticationGuard
             ]
         };
     }
