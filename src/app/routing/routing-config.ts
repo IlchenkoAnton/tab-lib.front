@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { MainComponent } from './pages/main/main.component';
-import { NotFoundPageComponent } from './pages/not-found/not-found-page.component';
+import { AuthenticationGuard } from '../modules/authentication';
 
 /**
  * Конфигурация маршрутизации приложения
@@ -27,7 +27,10 @@ export const routes: Routes = [
             /** Страница рабочего стола */
             {
                 path: 'dashboard',
-                loadChildren: './pages/dashboard/dashboard.module#DashboardModule'
+                loadChildren: './pages/dashboard/dashboard.module#DashboardModule',
+                canActivate: [
+                    AuthenticationGuard
+                ]
             },
             
             /** Страница 404 */

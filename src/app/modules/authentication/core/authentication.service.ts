@@ -6,6 +6,7 @@ import { AuthenticationBaseService } from './authentication-base.service';
 import { AuthenticationBaseRepository } from './authentication-base.repository';
 import { IUser } from './models/user.interface';
 import { User } from './models/user';
+import { ErrorCode } from '../../../core';
 
 /**
  * Сервис авторизации
@@ -63,7 +64,7 @@ export class AuthenticationService implements AuthenticationBaseService {
         const token: string = localStorage.getItem(this.tokenKey);
 
         if (!userId || !userName || !token) {
-            throw 'Пользователь не авторизован';
+            throw ErrorCode.U001;
         }
 
         return new User(userId, userName, token);

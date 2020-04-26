@@ -5,9 +5,9 @@ import { map } from 'rxjs/operators';
 
 import { AuthenticationBaseRepository } from '../core/authentication-base.repository';
 import { IUser } from '../core/models/user.interface';
-import { ApiGatewayBaseService } from '../../../core/api-gateway-base.service';
 import { User } from '../core/models/user';
 import { LoginResponseDto } from './login-response-dto';
+import { ApiGatewayBaseService } from '../../../core';
 
 /**
  * Репозиторий по работе с API авторизации

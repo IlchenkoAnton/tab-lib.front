@@ -4,9 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
 import { MainComponent } from './routing/pages/main/main.component';
 import { AuthenticationModule } from './modules/authentication';
+import { CoreModule } from './core';
 
 @NgModule({
     imports: [
@@ -14,7 +14,9 @@ import { AuthenticationModule } from './modules/authentication';
         HttpClientModule,
         AppRoutingModule,
         CoreModule,
-        AuthenticationModule
+        AuthenticationModule.forRoot({
+            redirectPath: [ '/', 'login' ]
+        })
     ],
     declarations: [
         AppComponent,
