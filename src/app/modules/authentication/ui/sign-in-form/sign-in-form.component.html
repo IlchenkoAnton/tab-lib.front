@@ -1,0 +1,33 @@
+<form [formGroup]="SignInForm">
+    <mat-form-field appearance="outline">
+        <mat-label>Адрес эл.почты</mat-label>
+        <input matInput
+               placeholder="Введите адрес эл.почты"
+               formControlName="login">
+        <mat-error *ngIf="LoginControl.hasError('email') && !LoginControl.hasError('required')">
+            Пожалуйста, введите адрес электронной почты
+        </mat-error>
+        <mat-error *ngIf="LoginControl.hasError('required')">
+            Адрес электронной почты <strong>обязателен</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Пароль</mat-label>
+        <input matInput
+               placeholder="Введите пароль"
+               formControlName="password"
+               [type]="HidePassword ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="toggleHidePassword()">
+            {{ HidePassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+        <mat-error *ngIf="PasswordControl.hasError('required')">
+            Пароль <strong>обязателен</strong>
+        </mat-error>
+    </mat-form-field>
+    <button mat-stroked-button
+            color="primary"
+            (click)="signIn()"
+            [disabled]="Loading">
+        Войти
+    </button>
+</form>

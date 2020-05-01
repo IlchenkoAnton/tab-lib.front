@@ -22,4 +22,14 @@ export abstract class AuthenticationBaseService {
      * Метод получения объекта пользователя
      */
     public abstract getUser(): IUser;
+
+    /**
+     * Метод перенаправления маршрута в авторизованную зону
+     */
+    public abstract redirectToAuthorizedZone(): void;
+
+    /**
+     * Метод перенаправления маршрута в неавторизованную зону
+     */
+    public abstract redirectToNotAuthorizedZone(): void;
 }

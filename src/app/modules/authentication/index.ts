@@ -5,3 +5,5 @@ export * from './core/authentication.guard';
 export * from './core/not-authentication.guard'
 export * from './core/authentication-base.service';
 export * from './core/models/user.interface';
+
+export * from './ui/sign-in-form/sign-in-form.component';

@@ -1,8 +1,7 @@
-import { Injectable, Inject } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { AuthenticationBaseService } from './authentication-base.service';
-import { AuthenticationConfig } from '../authentication-config.type';
 import { IUser } from './models/user.interface';
 
 /**
@@ -11,9 +10,7 @@ import { IUser } from './models/user.interface';
 @Injectable()
 export class NotAuthenticationGuard implements CanActivate {
     constructor(
-        private readonly router: Router,
-        private readonly authenticationService: AuthenticationBaseService,
-        @Inject('AUTHENTICATION_CONFIG_TOKEN') private readonly config: AuthenticationConfig
+        private readonly authenticationService: AuthenticationBaseService
     ) {}
 
     /**
@@ -24,7 +21,7 @@ export class NotAuthenticationGuard implements CanActivate {
             const user: IUser = this.authenticationService.getUser();
 
             if (user) {
-                this.router.navigate(this.config.authorizedZone);
+                this.authenticationService.redirectToAuthorizedZone();
 
                 return false
             }

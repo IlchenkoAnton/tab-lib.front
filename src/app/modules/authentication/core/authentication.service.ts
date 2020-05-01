@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Injectable, Inject } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { mapTo, tap, catchError } from 'rxjs/operators';
 
@@ -7,6 +8,7 @@ import { AuthenticationBaseRepository } from './authentication-base.repository';
 import { IUser } from './models/user.interface';
 import { User } from './models/user';
 import { ErrorCode } from '../../../core';
+import { AuthenticationConfig } from '../authentication-config.type';
 
 /**
  * Сервис авторизации
@@ -18,6 +20,8 @@ export class AuthenticationService implements AuthenticationBaseService {
     private tokenKey: string = 'token';
 
     constructor(
+        private readonly router: Router,
+        @Inject('AUTHENTICATION_CONFIG_TOKEN') private readonly config: AuthenticationConfig,
         private readonly authenticationRepository: AuthenticationBaseRepository
     ) {}
 
@@ -68,6 +72,20 @@ export class AuthenticationService implements AuthenticationBaseService {
         }
 
         return new User(userId, userName, token);
+    }
+
+    /**
+     * Метод перенаправления маршрута в авторизованную зону
+     */
+    public redirectToAuthorizedZone(): void {
+        this.router.navigate(this.config.authorizedZone);
+    }
+
+    /**
+     * Метод перенаправления маршрута в неавторизованную зону
+     */
+    public redirectToNotAuthorizedZone(): void {
+        this.router.navigate(this.config.notAuthorizedZone);
     }
 
     // ///////////////
