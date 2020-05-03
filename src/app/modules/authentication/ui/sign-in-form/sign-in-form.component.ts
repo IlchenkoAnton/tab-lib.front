@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, AbstractControl } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 import { takeUntil, catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -27,6 +28,7 @@ export class SignInFormComponent extends OnDestroyComponent implements OnInit {
     private hidePassword: boolean = true;
     private signInForm: FormGroup;
     private loading: boolean = false;
+    private messageError: string;
 
     get HidePassword(): boolean {
         return this.hidePassword;
@@ -46,6 +48,10 @@ export class SignInFormComponent extends OnDestroyComponent implements OnInit {
 
     get PasswordControl(): AbstractControl {
         return this.signInForm.get(SignInControlName.PASSWORD);
+    }
+
+    get MessageError(): string {
+        return this.messageError;
     }
 
     constructor(
@@ -79,13 +85,16 @@ export class SignInFormComponent extends OnDestroyComponent implements OnInit {
             const password: string = this.signInForm.get(SignInControlName.PASSWORD).value;
 
             this.loading = true;
+            this.messageError = null;
             this.authenticationService.signIn(login, password)
                 .pipe(
                     tap(() => {
                         this.authenticationService.redirectToAuthorizedZone();
                     }),
-                    catchError((error: any) => {
+                    catchError((error: HttpErrorResponse) => {
                         console.error(ErrorCode.R001);
+
+                        this.messageError = this.signInFormService.getMessageError(error.status);
 
                         return of(error);
                     }),

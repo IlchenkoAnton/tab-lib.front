@@ -3,11 +3,11 @@ import {
     HttpInterceptor,
     HttpRequest,
     HttpHandler,
-    HttpEvent,
     HTTP_INTERCEPTORS,
-    HttpResponse
+    HttpResponse,
+    HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 
 import { loginMock } from './login-mock';
 
@@ -19,8 +19,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     /**
      * Перехватчик запросов
      */
-    public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
+
+        // Авторизация
         if (request.method === 'POST' && request.url.includes('/login')) {
+            if (request.body.name.includes('error')) {
+                return throwError(new HttpErrorResponse({
+                    status: 403
+                }));
+            }
+
             return of(new HttpResponse({ status: 200, body: loginMock }));
         }
 

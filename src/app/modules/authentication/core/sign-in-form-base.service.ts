@@ -14,4 +14,10 @@ export abstract class SignInFormBaseService {
      * @param form - Объект формы
      */
     public abstract verifyForm(form: FormGroup): boolean;
+
+    /**
+     * Метод получения сообщения об ошибке
+     * @param errorCode - Код ошибки
+     */
+    public abstract getMessageError(errorCode: number): string;
 }

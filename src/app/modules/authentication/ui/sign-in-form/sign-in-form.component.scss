@@ -1,4 +1,14 @@
-form {
-    display: flex;
-    flex-direction: column;
+.sign-in-form {
+    &__message-error {
+        background-color: #ffacb0;
+        margin: 10px;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
 }

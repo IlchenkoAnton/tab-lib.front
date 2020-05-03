@@ -41,4 +41,17 @@ export class SignInFormService implements SignInFormBaseService {
             return true;
         }
     }
+
+    /**
+     * Метод получения сообщения об ошибке
+     * @param errorCode - Код ошибки
+     */
+    public getMessageError(errorCode: number): string {
+        switch (errorCode) {    
+            case 403:
+                return 'Не удалось распознать комбинацию логин / пароль';
+            default:
+                return 'Не удалось авторизоваться. Попробуйте позднее';
+        }
+    }
 }
