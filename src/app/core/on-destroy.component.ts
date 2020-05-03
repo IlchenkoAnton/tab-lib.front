@@ -11,7 +11,6 @@ export abstract class OnDestroyComponent implements OnDestroy {
      * Уничтожение компонента
      */
     public ngOnDestroy(): void {
-        debugger;
         this.destroy$.next(true);
         this.destroy$.complete();
     }

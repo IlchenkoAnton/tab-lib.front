@@ -9,6 +9,7 @@ import { MainComponent } from './routing/pages/main/main.component';
 import { AuthenticationModule } from './modules/authentication';
 import { CoreModule } from './core';
 import { HeaderComponent } from './components';
+import { fakeBackendProvider } from './fake-backend/fake-backend.interceptor';
 
 @NgModule({
     imports: [
@@ -27,7 +28,9 @@ import { HeaderComponent } from './components';
         MainComponent,
         HeaderComponent
     ],
-    providers: [],
+    providers: [
+        fakeBackendProvider
+    ],
     bootstrap: [
         AppComponent
     ]
