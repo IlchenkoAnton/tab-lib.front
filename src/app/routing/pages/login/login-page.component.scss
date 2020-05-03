@@ -1,0 +1,21 @@
+html {
+    overflow: hidden;
+}
+
+.login-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__form {
+        width: 350px;
+        margin-top: 5px;
+
+        &-logo {
+            padding: 10px 5px;
+            font-size: 1.5em;
+        }
+    }
+}
