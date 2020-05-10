@@ -1,0 +1,23 @@
+.users-menu {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        min-width: 200px;
+
+        &-login {
+            margin-bottom: 10px;
+        }
+
+        &-sign-out {
+            cursor: pointer;
+            font-size: 15px;
+            margin-left: auto;
+
+            &:hover {
+                color: black;
+
+            }
+        }
+    }
+}

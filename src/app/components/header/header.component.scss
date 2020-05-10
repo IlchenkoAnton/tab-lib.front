@@ -1,3 +1,19 @@
 .header {
-    
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+    box-shadow: 0 6px 4px -4px rgba(0, 0, 0, .2);
+
+    &__content {
+        width: 1024px;
+        display: flex;
+
+        &-item{
+            &_right {
+                margin-left: auto;
+            }
+        }
+    }
 }

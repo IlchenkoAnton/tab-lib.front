@@ -1,0 +1,14 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>account_circle</mat-icon>
+</button>
+<mat-menu #menu="matMenu" xPosition="before">
+    <div class="users-menu__content">
+        <div class="users-menu__content-login">
+            {{ User?.Name }}
+        </div>
+        <div class="users-menu__content-sign-out"
+             (click)="singOut()">
+            Выйти
+        </div>
+    </div>
+</mat-menu>

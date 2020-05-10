@@ -32,6 +32,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             return of(new HttpResponse({ status: 200, body: loginMock }));
         }
 
+        // Выход из системы
+        if (request.method === 'GET' && request.url.includes('/logout')) {
+            return of(new HttpResponse({ status: 200 }));
+        }
+
         return next.handle(request);
     }
 }
