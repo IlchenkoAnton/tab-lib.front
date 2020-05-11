@@ -6,18 +6,26 @@
         min-width: 200px;
 
         &-login {
+            color: #5E0D0D;
             margin-bottom: 10px;
         }
 
-        &-sign-out {
-            cursor: pointer;
+        &-item {
             font-size: 15px;
-            margin-left: auto;
+            cursor: pointer;
+            margin-bottom: 5px;
 
             &:hover {
-                color: black;
+                color: rgb(20, 34, 80);
+            }
 
+            a {
+                text-decoration: none;
             }
         }
+    }
+
+    .active {
+        font-weight: 500;
     }
 }

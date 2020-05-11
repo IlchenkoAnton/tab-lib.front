@@ -6,7 +6,13 @@
         <div class="users-menu__content-login">
             {{ User?.Name }}
         </div>
-        <div class="users-menu__content-sign-out"
+        <div class="users-menu__content-item">
+            <a [routerLink]="[ '/', 'private-room' ]"
+               routerLinkActive="active">
+                Личный кабинет
+            </a>
+        </div>
+        <div class="users-menu__content-item"
              (click)="singOut()">
             Выйти
         </div>

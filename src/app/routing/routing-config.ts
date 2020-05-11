@@ -34,6 +34,12 @@ export const routes: Routes = [
             {
                 path: 'dashboard',
                 loadChildren: './pages/dashboard/dashboard.module#DashboardModule'
+            },
+
+            /** Личный кабинет */
+            {
+                path: 'private-room',
+                loadChildren: './pages/private-room/private-room.module#PrivateRoomModule'
             }
         ]
     },

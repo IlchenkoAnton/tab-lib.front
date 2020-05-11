@@ -9,10 +9,15 @@
     &__content {
         width: 1024px;
         display: flex;
+        align-items: center;
 
-        &-item{
+        &-item {
             &_right {
                 margin-left: auto;
+            }
+
+            a {
+                text-decoration: none;
             }
         }
     }
