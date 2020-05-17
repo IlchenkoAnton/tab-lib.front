@@ -1,41 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 
-import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
-import { MainComponent } from './routing/pages/main/main.component';
-import { AuthenticationModule } from './modules/authentication';
-import { CoreModule } from './core';
-import { HeaderComponent, UsersMenuComponent } from './components';
+import { AppRoutingModule } from './core/routing';
+import { ApiService } from './data/api.service';
+import { AuthenticationRepository, TabLibRepository } from './data/repositories';
+import { NotAuthenticationGuard, AuthenticationGuard } from './core/guards';
+import { AuthenticationService } from './core/services';
 import { fakeBackendProvider } from './fake-backend/fake-backend.interceptor';
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpClientModule,
-        AppRoutingModule,
-        CoreModule,
-        AuthenticationModule.forRoot({
-            notAuthorizedZone: [ '/', 'login' ],
-            authorizedZone: [ '/' ]
-        }),
-        BrowserAnimationsModule,
-
-        MatMenuModule,
-        MatButtonModule,
-        MatIconModule
+        AppRoutingModule
     ],
     declarations: [
-        AppComponent,
-        MainComponent,
-        HeaderComponent,
-        UsersMenuComponent
+        AppComponent
     ],
     providers: [
-        fakeBackendProvider
+        fakeBackendProvider,
+
+        ApiService,
+        AuthenticationRepository,
+        TabLibRepository,
+        
+        NotAuthenticationGuard,
+        AuthenticationGuard,
+
+        AuthenticationService
     ],
     bootstrap: [
         AppComponent
