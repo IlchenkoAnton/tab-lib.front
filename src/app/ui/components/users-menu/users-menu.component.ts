@@ -1,8 +1,9 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 
-import { OnDestroyComponent, ErrorCode } from '../../core';
-import { AuthenticationBaseService, IUser } from '../../modules/authentication';
+import { OnDestroyComponent } from '../../../common';
+import { IUser } from '../../../core/models';
+import { AuthenticationFacade } from '../../../facades';
 
 /**
  * Компонент меню пользователя
@@ -21,7 +22,7 @@ export class UsersMenuComponent extends OnDestroyComponent implements OnInit {
     }
 
     constructor(
-        private readonly authenticationService: AuthenticationBaseService
+        private readonly authenticationFacade: AuthenticationFacade
     ) {
         super();
     }
@@ -37,21 +38,17 @@ export class UsersMenuComponent extends OnDestroyComponent implements OnInit {
      * Метод выхода из системы
      */
     public singOut(): void {
-        this.authenticationService.signOut()
+        this.authenticationFacade.signOut()
             .pipe(
                 takeUntil(this.destroy$)
             )
-            .subscribe(() => {
-                this.authenticationService.redirectToNotAuthorizedZone();
-            }, () => {
-                console.error(ErrorCode.R002);
-            });
+            .subscribe(() => {});
     }
 
     /**
      * Метод обновления пользователя
      */
     private updateUser(): void {
-        this.user = this.authenticationService.getUser();
+        this.user = this.authenticationFacade.getUser();
     }
 }

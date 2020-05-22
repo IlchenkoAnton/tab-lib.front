@@ -5,7 +5,7 @@ import { MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule } fr
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginPageComponent } from './login-page.component';
-import { SignInFormComponent } from '../../components';
+import { SignInFormComponent } from '../../../ui/components';
 
 /**
  * Модуль страницы авторизации

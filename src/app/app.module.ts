@@ -1,35 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './core/routing';
-import { ApiService } from './data/api.service';
-import { AuthenticationRepository, TabLibRepository } from './data/repositories';
-import { NotAuthenticationGuard, AuthenticationGuard } from './core/guards';
-import { AuthenticationService } from './core/services';
 import { fakeBackendProvider } from './fake-backend/fake-backend.interceptor';
+import { MainComponent } from './routing/main.component';
+import { AppRoutingModule } from './routing/app-routing.module';
+import { HeaderComponent, UsersMenuComponent } from './ui/components';
+import { FacadeModule } from './facades/facade.module';
 
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FacadeModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        MainComponent,
+        HeaderComponent,
+        UsersMenuComponent
     ],
     providers: [
-        fakeBackendProvider,
-
-        ApiService,
-        AuthenticationRepository,
-        TabLibRepository,
-        
-        NotAuthenticationGuard,
-        AuthenticationGuard,
-
-        AuthenticationService
+        fakeBackendProvider
     ],
     bootstrap: [
         AppComponent

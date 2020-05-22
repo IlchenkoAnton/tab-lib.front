@@ -26,6 +26,8 @@ export class NotAuthenticationGuard implements CanActivate {
                 return false
             }
         } catch (error) {
+            console.error(error);
+
             return true;
         }
     }

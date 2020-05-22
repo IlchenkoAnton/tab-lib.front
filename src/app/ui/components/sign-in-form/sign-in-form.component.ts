@@ -4,10 +4,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { takeUntil, catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { SignInFormBaseService } from '../../core/sign-in-form-base.service';
-import { SignInFormService, SignInControlName } from './sign-in-form.service';
-import { AuthenticationBaseService } from '../../core/authentication-base.service';
-import { OnDestroyComponent, ErrorCode } from '../../../../core';
+import { AuthenticationFacade, SignInFormControlName } from '../../../facades';
+import { OnDestroyComponent } from '../../../common';
+import { ErrorCode } from '../../../core/enums';
 
 /**
  * Компонент формы авторизации
@@ -16,13 +15,7 @@ import { OnDestroyComponent, ErrorCode } from '../../../../core';
     selector: 'tl-sign-in-form',
     templateUrl: './sign-in-form.component.html',
     styleUrls: [ './sign-in-form.component.scss' ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: SignInFormBaseService,
-            useClass: SignInFormService
-        }
-    ]
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignInFormComponent extends OnDestroyComponent implements OnInit {
     private hidePassword: boolean = true;
@@ -43,11 +36,11 @@ export class SignInFormComponent extends OnDestroyComponent implements OnInit {
     }
 
     get LoginControl(): AbstractControl {
-        return this.signInForm.get(SignInControlName.LOGIN);
+        return this.signInForm.get(SignInFormControlName.LOGIN);
     }
 
     get PasswordControl(): AbstractControl {
-        return this.signInForm.get(SignInControlName.PASSWORD);
+        return this.signInForm.get(SignInFormControlName.PASSWORD);
     }
 
     get MessageError(): string {
@@ -56,8 +49,7 @@ export class SignInFormComponent extends OnDestroyComponent implements OnInit {
 
     constructor(
         private readonly changeDetectorRef: ChangeDetectorRef,
-        private readonly signInFormService: SignInFormBaseService,
-        private readonly authenticationService: AuthenticationBaseService
+        private readonly authenticationFacade: AuthenticationFacade
     ) {
         super();
     }
@@ -66,7 +58,7 @@ export class SignInFormComponent extends OnDestroyComponent implements OnInit {
      * Инициализация
      */
     public ngOnInit(): void {
-        this.signInForm = this.signInFormService.getForm();
+        this.signInForm = this.authenticationFacade.getSignInForm();
     }
 
     /**
@@ -80,21 +72,18 @@ export class SignInFormComponent extends OnDestroyComponent implements OnInit {
      * Метод входа в систему
      */
     public signIn(): void {
-        if (this.signInFormService.verifyForm(this.signInForm)) {
-            const login: string = this.signInForm.get(SignInControlName.LOGIN).value;
-            const password: string = this.signInForm.get(SignInControlName.PASSWORD).value;
+        if (this.authenticationFacade.verifySignInForm(this.signInForm)) {
+            const login: string = this.signInForm.get(SignInFormControlName.LOGIN).value;
+            const password: string = this.signInForm.get(SignInFormControlName.PASSWORD).value;
 
             this.loading = true;
             this.messageError = null;
-            this.authenticationService.signIn(login, password)
+            this.authenticationFacade.signIn(login, password)
                 .pipe(
-                    tap(() => {
-                        this.authenticationService.redirectToAuthorizedZone();
-                    }),
                     catchError((error: HttpErrorResponse) => {
                         console.error(ErrorCode.R001);
 
-                        this.messageError = this.signInFormService.getMessageError(error.status);
+                        this.messageError = this.authenticationFacade.getSignInMessageError(error.status);
 
                         return of(error);
                     }),
