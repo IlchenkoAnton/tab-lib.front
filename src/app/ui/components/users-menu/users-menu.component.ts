@@ -1,9 +1,8 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
-
-import { OnDestroyComponent } from '../../../common';
-import { IUser } from '../../../core/models';
-import { AuthenticationFacade } from '../../../facades';
+import { OnDestroyAbstract } from '@common';
+import { IUser } from '@core/models';
+import { AuthenticationFacade } from '@facades';
 
 /**
  * Компонент меню пользователя
@@ -14,7 +13,7 @@ import { AuthenticationFacade } from '../../../facades';
     styleUrls: [ './users-menu.component.scss' ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UsersMenuComponent extends OnDestroyComponent implements OnInit {
+export class UsersMenuComponent extends OnDestroyAbstract implements OnInit {
     private user: IUser;
 
     get User(): IUser {

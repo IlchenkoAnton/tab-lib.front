@@ -1,2 +1,3 @@
-export * from './moment-type';
-export * from './on-destroy.component';
+export * from './on-destroy.abstract';
+
+export * from './types';

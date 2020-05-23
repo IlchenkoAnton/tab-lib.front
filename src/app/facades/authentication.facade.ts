@@ -16,7 +16,7 @@ export enum SignInFormControlName {
 };
 
 /**
- * //
+ * Фасад для работы с данными пользователя
  */
 @Injectable()
 export class AuthenticationFacade {

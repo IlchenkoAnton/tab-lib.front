@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 
+import { TMoment } from '@common';
+import { ITab, Tab } from '@core/models';
 import { ApiService } from '../api.service';
-import { ITab, Tab } from '../../core/models';
 import { TabLibResponseDto } from '../dto';
-import { TMoment } from '../../common';
 
 
 /**

@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 
+import { FacadeModule } from '@facades';
+import { HeaderComponent, UsersMenuComponent } from '@ui/components';
 import { AppComponent } from './app.component';
 import { fakeBackendProvider } from './fake-backend/fake-backend.interceptor';
 import { MainComponent } from './routing/main.component';
 import { AppRoutingModule } from './routing/app-routing.module';
-import { HeaderComponent, UsersMenuComponent } from './ui/components';
-import { FacadeModule } from './facades/facade.module';
 
 @NgModule({
     imports: [
@@ -18,6 +18,7 @@ import { FacadeModule } from './facades/facade.module';
         HttpClientModule,
         AppRoutingModule,
         FacadeModule,
+
         MatMenuModule,
         MatIconModule,
         MatButtonModule
@@ -25,6 +26,7 @@ import { FacadeModule } from './facades/facade.module';
     declarations: [
         AppComponent,
         MainComponent,
+
         HeaderComponent,
         UsersMenuComponent
     ],

@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { IUser, User } from '@core/models';
 import { ApiService } from '../api.service';
-import { IUser, User } from '../../core/models';
 import { LoginResponseDto, LoginRequestDto } from '../dto';
 
 /**

@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, AbstractControl } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { takeUntil, catchError, tap } from 'rxjs/operators';
+import { takeUntil, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { AuthenticationFacade, SignInFormControlName } from '../../../facades';
-import { OnDestroyComponent } from '../../../common';
-import { ErrorCode } from '../../../core/enums';
+import { OnDestroyAbstract } from '@common';
+import { SignInFormControlName, AuthenticationFacade } from '@facades';
+import { ErrorCode } from '@core/enums';
 
 /**
  * Компонент формы авторизации
@@ -17,7 +17,7 @@ import { ErrorCode } from '../../../core/enums';
     styleUrls: [ './sign-in-form.component.scss' ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SignInFormComponent extends OnDestroyComponent implements OnInit {
+export class SignInFormComponent extends OnDestroyAbstract implements OnInit {
     private hidePassword: boolean = true;
     private signInForm: FormGroup;
     private loading: boolean = false;
