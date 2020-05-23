@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>
+            {{ Tab.Name }}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{ Tab.Link }}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content *ngIf="Tab.Description">
+        {{ Tab.Description }}
+    </mat-card-content>
+</mat-card>

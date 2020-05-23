@@ -5,13 +5,13 @@ import { distinctUntilChanged, takeUntil, catchError, tap } from 'rxjs/operators
 import { TabLibService } from '@core/services';
 import { TabLibStore, TabListState } from './tab-lib.store';
 import { ITab } from '@core/models';
-import { OnDestroyAbstract } from '@common';
+import { OnDestroyBase } from '@common';
 
 /**
  * Фасад для работы со списком табов (закладок)
  */
 @Injectable()
-export class TabLibFacade extends OnDestroyAbstract {
+export class TabLibFacade extends OnDestroyBase {
     get Model$(): Observable<TabListState> {
         return this.tabLibStore.Model$
             .pipe(

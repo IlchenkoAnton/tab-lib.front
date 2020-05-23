@@ -10,6 +10,7 @@ import {
 import { Observable, of, throwError } from 'rxjs';
 
 import { loginMock } from './login-mock';
+import { tabListMock } from './tab-list-mock';
 
 /**
  * Перехватчик запросов к API для имитации бэкэнда
@@ -35,6 +36,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // Выход из системы
         if (request.method === 'GET' && request.url.includes('/logout')) {
             return of(new HttpResponse({ status: 200 }));
+        }
+
+        // Получить список табов (вкладок)
+        if (request.method === 'GET' && request.url.includes('/tab-list')) {
+            return of(new HttpResponse({ status: 200, body: tabListMock }));
         }
 
         return next.handle(request);

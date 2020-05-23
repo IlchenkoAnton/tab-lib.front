@@ -1,0 +1,6 @@
+<div class="list" *ngIf="(Model$ | async) as model">
+    <div class="list__item"
+         *ngFor="let item of model?.list">
+        <tl-tab-info [Tab]="item"></tl-tab-info>
+    </div>
+</div>

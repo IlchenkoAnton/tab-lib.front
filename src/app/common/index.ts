@@ -1,3 +1,3 @@
-export * from './on-destroy.abstract';
+export * from './on-destroy-base';
 
 export * from './types';

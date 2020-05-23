@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
-import { OnDestroyAbstract } from '@common';
+import { OnDestroyBase } from '@common';
 import { IUser } from '@core/models';
 import { AuthenticationFacade } from '@facades';
 
@@ -13,7 +13,7 @@ import { AuthenticationFacade } from '@facades';
     styleUrls: [ './users-menu.component.scss' ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UsersMenuComponent extends OnDestroyAbstract implements OnInit {
+export class UsersMenuComponent extends OnDestroyBase implements OnInit {
     private user: IUser;
 
     get User(): IUser {

@@ -4,7 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { takeUntil, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { OnDestroyAbstract } from '@common';
+import { OnDestroyBase } from '@common';
 import { SignInFormControlName, AuthenticationFacade } from '@facades';
 import { ErrorCode } from '@core/enums';
 
@@ -17,7 +17,7 @@ import { ErrorCode } from '@core/enums';
     styleUrls: [ './sign-in-form.component.scss' ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SignInFormComponent extends OnDestroyAbstract implements OnInit {
+export class SignInFormComponent extends OnDestroyBase implements OnInit {
     private hidePassword: boolean = true;
     private signInForm: FormGroup;
     private loading: boolean = false;
