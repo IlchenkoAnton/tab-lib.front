@@ -7,7 +7,8 @@ import {
     HttpResponse,
     HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, timer } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { loginMock } from './login-mock';
 import { tabListMock } from './tab-list-mock';
@@ -40,7 +41,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         // Получить список табов (вкладок)
         if (request.method === 'GET' && request.url.includes('/tab-list')) {
-            return of(new HttpResponse({ status: 200, body: tabListMock }));
+            return timer(2000)
+                .pipe(
+                    switchMap(() => of(new HttpResponse({ status: 200, body: tabListMock }))),
+                    //switchMap(() => throwError(new HttpErrorResponse({ status: 500 })))
+                );
         }
 
         return next.handle(request);

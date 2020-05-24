@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 
 import { DateFormatPipe } from './pipes';
-import { TextSearchFieldComponent } from './components';
+import { TextSearchFieldComponent, LoadingComponent, ErrorComponent } from './components';
+import { RequestStatusDirective } from './directives';
 
 /**
  * Шаред-модуль
@@ -9,13 +10,25 @@ import { TextSearchFieldComponent } from './components';
 @NgModule({
     declarations: [
         TextSearchFieldComponent,
+        LoadingComponent,
+        ErrorComponent,
+
+        RequestStatusDirective,
 
         DateFormatPipe
     ],
     exports: [
         TextSearchFieldComponent,
+        LoadingComponent,
+        ErrorComponent,
+
+        RequestStatusDirective,
 
         DateFormatPipe
+    ],
+    entryComponents: [
+        LoadingComponent,
+        ErrorComponent
     ]
 })
 export class SharedModule {}

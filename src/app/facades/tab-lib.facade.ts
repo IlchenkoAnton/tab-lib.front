@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { distinctUntilChanged, takeUntil, catchError, tap } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { distinctUntilChanged, takeUntil, catchError, tap, delay, map, switchMap } from 'rxjs/operators';
 
 import { TabLibService } from '@core/services';
 import { TabLibStore, TabListState } from './tab-lib.store';
@@ -37,7 +37,6 @@ export class TabLibFacade extends OnDestroyBase {
 
         this.tabLibService.getTabList(userId)
             .pipe(
-                takeUntil(this.destroy$),
                 tap(() => {
                     this.tabLibStore.setRequestStatus({
                         isLoading: false,
@@ -51,7 +50,8 @@ export class TabLibFacade extends OnDestroyBase {
                     });
 
                     return of([]);
-                })
+                }),
+                takeUntil(this.destroy$)
             )
             .subscribe((list: ITab[]) => {
                 this.tabLibStore.setList(list);
