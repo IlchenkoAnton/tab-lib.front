@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { OverviewTabListComponent, TabInfoComponent } from '@ui/components';
+import { OverviewTabListComponent, TabInfoComponent, FilterTabListComponent } from '@ui/components';
 import { SharedModule } from '@ui/shared.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardPageComponent } from './dashboard-page.component';
@@ -18,7 +18,8 @@ import { DashboardPageComponent } from './dashboard-page.component';
     declarations: [
         DashboardPageComponent,
         OverviewTabListComponent,
-        TabInfoComponent
+        TabInfoComponent,
+        FilterTabListComponent
     ]
 })
 export class DashboardModule {}
