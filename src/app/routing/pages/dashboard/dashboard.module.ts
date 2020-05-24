@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { OverviewTabListComponent, TabInfoComponent } from '@ui/components';
-import { MatCardModule } from '@angular/material';
+import { SharedModule } from '@ui/shared.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardPageComponent } from './dashboard-page.component';
 
@@ -13,7 +13,7 @@ import { DashboardPageComponent } from './dashboard-page.component';
     imports: [
         CommonModule,
         DashboardRoutingModule,
-        MatCardModule
+        SharedModule
     ],
     declarations: [
         DashboardPageComponent,

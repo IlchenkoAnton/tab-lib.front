@@ -1,14 +1,18 @@
-<mat-card>
-    <mat-card-header>
-        <div mat-card-avatar></div>
-        <mat-card-title>
+<div class="container" (click)="goToLink()">
+    <div class="header">
+        <div class="header__title">
             {{ Tab.Name }}
-        </mat-card-title>
-        <mat-card-subtitle>
-            {{ Tab.Link }}
-        </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content *ngIf="Tab.Description">
+        </div>
+        <div class="header__sub-title">
+            <div class="link">
+                {{ Tab.Link }}
+            </div>
+            <div class="date">
+                {{ Tab.DateCreation | tlDateFormat }}
+            </div>
+        </div>
+    </div>
+    <div class="content" *ngIf="Tab.Description">
         {{ Tab.Description }}
-    </mat-card-content>
-</mat-card>
+    </div>
+</div>
