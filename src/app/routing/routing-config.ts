@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { MainComponent } from './main.component';
-import { AuthenticationGuard, NotAuthenticationGuard } from '../core/guards';
+import { AuthorizationGuard, NotAuthorizationGuard } from '@modules/authorization';
 
 /**
  * Конфигурация маршрутизации приложения
@@ -11,7 +11,7 @@ export const routes: Routes = [
         path: '',
         component: MainComponent,
         canActivate: [
-            AuthenticationGuard
+            AuthorizationGuard
         ],
         children: [
             {
@@ -36,7 +36,7 @@ export const routes: Routes = [
         path: 'login',
         loadChildren: './pages/login/login.module#LoginModule',
         canActivate: [
-            NotAuthenticationGuard
+            NotAuthorizationGuard
         ]
     },
 

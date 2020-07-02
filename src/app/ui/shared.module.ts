@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { DateFormatPipe } from './pipes';
-import { TextSearchFieldComponent, LoadingComponent, ErrorComponent } from './components';
+import { LoadingComponent, ErrorComponent } from './components';
 import { RequestStatusDirective } from './directives';
 
 /**
@@ -9,7 +9,6 @@ import { RequestStatusDirective } from './directives';
  */
 @NgModule({
     declarations: [
-        TextSearchFieldComponent,
         LoadingComponent,
         ErrorComponent,
 
@@ -18,7 +17,6 @@ import { RequestStatusDirective } from './directives';
         DateFormatPipe
     ],
     exports: [
-        TextSearchFieldComponent,
         LoadingComponent,
         ErrorComponent,
 

@@ -1,7 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnDestroy, OnInit } from '@angular/core';
-
-import { TabLibFacade, AuthenticationFacade } from '@facades';
-import { IUser } from '@core/models';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 /**
  * Компонент страницы Рабочий стол
@@ -12,25 +9,6 @@ import { IUser } from '@core/models';
     styleUrls: [ './dashboard-page.component.scss' ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardPageComponent implements OnInit, OnDestroy {
-    constructor(
-        private readonly authenticationFacade: AuthenticationFacade,
-        private readonly tabLibFacade: TabLibFacade
-    ) {}
-
-    /**
-     * //
-     */
-    public ngOnInit(): void {
-        const user: IUser = this.authenticationFacade.getUser();
-
-        this.tabLibFacade.updateModel(user.Id);
-    }
-
-    /**
-     * //
-     */
-    public ngOnDestroy(): void {
-        this.tabLibFacade.destroyUpdateModel();
-    }
+export class DashboardPageComponent {
+    
 }

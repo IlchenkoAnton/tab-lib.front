@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule } from '@angular/material';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginPageComponent } from './login-page.component';
-import { SignInFormComponent } from '../../../ui/components';
+import { SignInFormComponent } from '@ui/components';
 
 /**
  * Модуль страницы авторизации
@@ -13,12 +11,7 @@ import { SignInFormComponent } from '../../../ui/components';
 @NgModule({
     imports: [
         CommonModule,
-        ReactiveFormsModule,
-        LoginRoutingModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule
+        LoginRoutingModule
     ],
     declarations: [
         LoginPageComponent,
