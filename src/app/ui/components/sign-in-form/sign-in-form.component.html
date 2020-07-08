@@ -1,3 +1,49 @@
-<div>
-    tl-sign-in-form
+<div class="sign-in-form">
+    <form novalidate [formGroup]="FormGroup" (ngSubmit)="submit()">
+        <div class="form-group" *ngIf="FormGroup.get(FiledName.LOGIN) as login">
+            <label>Адрес эл. почты</label>
+            <input type="email"
+                   class="form-control"
+                   placeholder="login@email.com"
+                   [class.is-invalid]="login.invalid && (login.dirty || login.touched)"
+                   [formControlName]="FiledName.LOGIN">
+            <ng-container *ngIf="login.invalid && (login.dirty || login.touched)">
+                <div class="invalid-feedback" *ngIf="login.errors.required">
+                    Адрес не заполнен
+                </div>
+                <div class="invalid-feedback" *ngIf="login.errors.email">
+                    Некорректный адрес
+                </div>
+            </ng-container>
+        </div>
+        <div class="form-group" *ngIf="FormGroup.get(FiledName.PASSWORD) as password">
+            <label>Пароль</label>
+            <div class="input-group">
+                <input [type]="PasswordInputType"
+                       class="form-control"
+                       placeholder="******"
+                       [class.is-invalid]="password.invalid && (password.dirty || password.touched)"
+                       [formControlName]="FiledName.PASSWORD">
+                <div class="input-group-append">
+                    <button class="btn"
+                            [class.btn-outline-secondary]="!(password.invalid && (password.dirty || password.touched))"
+                            [class.btn-outline-danger]="password.invalid && (password.dirty || password.touched)"
+                            type="button"
+                            (mousedown)="PasswordInputType = 'text'"
+                            (mouseup)="PasswordInputType = 'password'"
+                            (mouseout)="PasswordInputType = 'password'">
+                        <fa-icon [icon]="PasswordInputType === 'text' ? FaEye : FaEyeSlash"></fa-icon>
+                    </button>
+                </div>
+                <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <div class="invalid-feedback" *ngIf="password.errors.required">
+                        Пароль не заполнен
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="IsLoading">
+            Войти
+        </button>
+    </form>
 </div>

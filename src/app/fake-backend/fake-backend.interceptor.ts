@@ -8,7 +8,7 @@ import {
     HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, of, throwError, timer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, mapTo } from 'rxjs/operators';
 
 import { loginMock } from './login-mock';
 import { tabListMock } from './tab-list-mock';
@@ -31,12 +31,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 }));
             }
 
-            return of(new HttpResponse({ status: 200, body: loginMock }));
+            return timer(1000).pipe(
+                mapTo(new HttpResponse({ status: 200, body: loginMock }))
+            );
         }
 
         // Выход из системы
         if (request.method === 'GET' && request.url.includes('/logout')) {
-            return of(new HttpResponse({ status: 200 }));
+            return timer(1000).pipe(
+                mapTo(new HttpResponse({ status: 200 }))
+            );
         }
 
         // Получить список табов (вкладок)
@@ -49,6 +53,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         return next.handle(request);
+    }
+
+    private getResponse(value: any): Observable<any> {
+        return timer(1000).pipe(
+            mapTo(value)
+        );
     }
 }
 

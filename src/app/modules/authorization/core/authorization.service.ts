@@ -30,6 +30,8 @@ export class AuthorizationService extends AuthorizationBaseService {
                     localStorage.setItem(this.userIdKey, user.Id);
                     localStorage.setItem(this.userNameKey, user.Name);
                     localStorage.setItem(this.tokenKey, user.Token);
+
+                    this.redirectToAuthorizedZone();
                 }),
                 catchError((error) => {
                     this.clearUserData();
