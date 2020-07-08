@@ -1,6 +1,6 @@
 import { AuthorizationConfig } from '@modules/authorization';
 
-export const authorizationConfig: AuthorizationConfig = {
+export const authorizationModuleConfig: AuthorizationConfig = {
     apiService: {
         login: () => '/login',
         logout: () => '/logout'

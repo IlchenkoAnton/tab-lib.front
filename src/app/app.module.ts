@@ -10,7 +10,7 @@ import { fakeBackendProvider } from './fake-backend/fake-backend.interceptor';
 import { MainComponent } from './routing/main.component';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AuthorizationModule } from '@modules/authorization';
-import { authorizationConfig } from '@config/authorization-config';
+import { authorizationModuleConfig } from '@config/authorization-module-config';
 
 moment.locale('ru');
 
@@ -20,7 +20,7 @@ moment.locale('ru');
         BrowserAnimationsModule,
         HttpClientModule,
         AppRoutingModule,
-        AuthorizationModule.forRoot(authorizationConfig)
+        AuthorizationModule.forRoot(authorizationModuleConfig)
     ],
     declarations: [
         AppComponent,
